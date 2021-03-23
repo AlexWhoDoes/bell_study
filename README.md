@@ -1,2 +1,2 @@
 # bell_study
-it will be filled in later
+The schema of db is being modyfied. Follow this link https://dbdesigner.page.link/DuX8bKdGCvqUUvhd7 
