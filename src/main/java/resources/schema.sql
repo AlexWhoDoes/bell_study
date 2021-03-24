@@ -34,7 +34,6 @@ CREATE TABLE IF NOT EXISTS Organization (
     phone      VARCHAR(10)                     COMMENT 'Head office organization phone',
     is_active  BOOLEAN       DEFAULT TRUE      COMMENT 'Organization status'
 );
-CREATE INDEX IX_Organization_id ON Organization (id);
 CREATE INDEX IX_Organization_name ON Organization (short_name);
 
 CREATE TABLE IF NOT EXISTS Office (
@@ -46,7 +45,6 @@ CREATE TABLE IF NOT EXISTS Office (
     id_organisation INTEGER       NOT NULL     COMMENT 'Unique identifier of an organization to which an office belongs'
 );
 ALTER TABLE Office ADD FOREIGN KEY (id_organisation) REFERENCES Organization(id);
-CREATE INDEX IX_Office_id ON Office (id);
 CREATE INDEX IX_Office_id_organisation ON Office (id_organisation);
 
 CREATE TABLE IF NOT EXISTS User (
@@ -62,7 +60,6 @@ CREATE TABLE IF NOT EXISTS User (
 );
 ALTER TABLE User ADD FOREIGN KEY (id_office) REFERENCES Office(id);
 ALTER TABLE User ADD FOREIGN KEY (document)  REFERENCES Document(id);
-CREATE INDEX IX_User_id ON User (id);
 CREATE INDEX IX_User_first_name ON User (first_name);
 CREATE INDEX IX_User_id_office ON User (id_office);
 CREATE INDEX IX_User_id_document ON User (document);
