@@ -1,2 +1,2 @@
 # bell_study
-The schema of DB is being modified. Follow this link https://dbdesigner.page.link/DuX8bKdGCvqUUvhd7 
+to see a graphical representation of schema follow this link https://dbdesigner.page.link/DuX8bKdGCvqUUvhd7 
