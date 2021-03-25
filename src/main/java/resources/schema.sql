@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS Citizenship (
-    id             INTEGER                            COMMENT 'Unique identifier' PRIMARY KEY AUTO_INCREMENT,
-    code           VARCHAR(3)    NOT NULL             COMMENT 'Citizenship code',
-    citizenship_name     VARCHAR(50)   NOT NULL       COMMENT 'Citizenship name'
+    id                   INTEGER                            COMMENT 'Unique identifier' PRIMARY KEY AUTO_INCREMENT,
+    code                 VARCHAR(3)    NOT NULL             COMMENT 'Citizenship code',
+    citizenship_name     VARCHAR(50)   NOT NULL             COMMENT 'Citizenship name'
 );
 COMMENT ON TABLE Citizenship IS 'directory of citizenship';
 
@@ -24,27 +24,38 @@ ALTER TABLE Document ADD FOREIGN KEY (citizenship) REFERENCES Citizenship(id);
 CREATE INDEX IX_User_citizenship ON Document (citizenship);
 CREATE INDEX IX_User_document ON Document (document);
 
+CREATE TABLE IF NOT EXISTS Address (
+    id         INTEGER                         COMMENT 'Unique identifier' PRIMARY KEY AUTO_INCREMENT,
+    city       VARCHAR(50)   NOT NULL          COMMENT 'Address city',
+    street     VARCHAR(50)   NOT NULL          COMMENT 'Address street',
+    house      VARCHAR(10)   NOT NULL          COMMENT 'Address house'
+);
+
 CREATE TABLE IF NOT EXISTS Organization (
     id         INTEGER                         COMMENT 'Unique identifier' PRIMARY KEY AUTO_INCREMENT,
     short_name VARCHAR(50)   NOT NULL          COMMENT 'Short name of an organization',
     full_name  VARCHAR(150)  NOT NULL          COMMENT 'Full name of an organization',
     inn        VARCHAR(10)   NOT NULL          COMMENT 'Organization TIN',
     kpp        VARCHAR(9)    NOT NULL          COMMENT 'Organization RRC',
-    address    TEXT          NOT NULL          COMMENT 'Head office organization address',
+    address    INTEGER       NOT NULL          COMMENT 'Head office organization address',
     phone      VARCHAR(10)                     COMMENT 'Head office organization phone',
     is_active  BOOLEAN       DEFAULT TRUE      COMMENT 'Organization status'
 );
+ALTER TABLE Organization ADD FOREIGN KEY (address) REFERENCES Address(id);
+CREATE INDEX IX_Organization_address ON Address (id);
 CREATE INDEX IX_Organization_name ON Organization (short_name);
 
 CREATE TABLE IF NOT EXISTS Office (
     id              INTEGER                    COMMENT 'Unique identifier' PRIMARY KEY AUTO_INCREMENT,
     office_name     VARCHAR(50)   NOT NULL     COMMENT 'Short name of an organization office',
-    address         TEXT          NOT NULL     COMMENT 'Address of an organization office',
+    address         INTEGER       NOT NULL     COMMENT 'Address of an organization office',
     phone           VARCHAR(10)                COMMENT 'Phone number of an organization office',
     isActive        BOOLEAN       DEFAULT TRUE COMMENT 'Status of an organization office ',
     id_organisation INTEGER       NOT NULL     COMMENT 'Unique identifier of an organization to which an office belongs'
 );
 ALTER TABLE Office ADD FOREIGN KEY (id_organisation) REFERENCES Organization(id);
+ALTER TABLE Office ADD FOREIGN KEY (address) REFERENCES Address(id);
+CREATE INDEX IX_Office_address ON Address (id);
 CREATE INDEX IX_Office_id_organisation ON Office (id_organisation);
 
 CREATE TABLE IF NOT EXISTS User (
