@@ -14,16 +14,13 @@ COMMENT ON TABLE Document_type IS 'directory of document types';
 
 CREATE TABLE IF NOT EXISTS Document (
      id              INTEGER                     COMMENT 'Unique identifier' PRIMARY KEY AUTO_INCREMENT,
-     doc_type_id     INTEGER     NOT NULL        COMMENT 'Real document',
-     citizenship_id  INTEGER     NOT NULL        COMMENT 'Real citizenship',
+     id_doc_type     INTEGER     NOT NULL        COMMENT 'Real document',
      document_date   DATE        NOT NULL        COMMENT 'Real document date',
      document_number VARCHAR(10) NOT NULL        COMMENT 'Real document number'
 );
 COMMENT ON TABLE Document IS 'real documents table';
-ALTER TABLE Document ADD FOREIGN KEY (doc_type_id) REFERENCES Document_type(id);
-ALTER TABLE Document ADD FOREIGN KEY (citizenship_id) REFERENCES Citizenship(id);
-CREATE INDEX IX_User_citizenship ON Document (citizenship_id);
-CREATE INDEX IX_User_document ON Document (doc_type_id);
+ALTER TABLE Document ADD FOREIGN KEY (id_doc_type) REFERENCES Document_type(id);
+CREATE INDEX IX_User_document ON Document (id_doc_type);
 
 CREATE TABLE IF NOT EXISTS Address (
     id         INTEGER                         COMMENT 'Unique identifier' PRIMARY KEY AUTO_INCREMENT,
@@ -66,12 +63,15 @@ CREATE TABLE IF NOT EXISTS User (
     middle_name      VARCHAR(50)                COMMENT 'User middle name',
     position         VARCHAR(50)   NOT NULL     COMMENT 'User position',
     phone            VARCHAR(10)                COMMENT 'User phone',
-    document_id      INTEGER                    COMMENT 'User document',
+    id_document      INTEGER                    COMMENT 'User document',
     is_identified    BOOLEAN       DEFAULT TRUE COMMENT 'Is user identified?',
+    id_citizenship   INTEGER       NOT NULL     COMMENT 'User citizenship',
     id_office        INTEGER       NOT NULL     COMMENT 'Unique identifier of an organization to which a user belongs'
 );
 ALTER TABLE User ADD FOREIGN KEY (id_office) REFERENCES Office(id);
-ALTER TABLE User ADD FOREIGN KEY (document_id)  REFERENCES Document(id);
+ALTER TABLE User ADD FOREIGN KEY (id_document)  REFERENCES Document(id);
+ALTER TABLE User ADD FOREIGN KEY (id_citizenship)  REFERENCES Citizenship(id);
+CREATE INDEX IX_User_id_citizenship ON User (id_citizenship);
 CREATE INDEX IX_User_first_name ON User (first_name);
 CREATE INDEX IX_User_id_office ON User (id_office);
-CREATE INDEX IX_User_id_document ON User (document_id);
+CREATE INDEX IX_User_id_document ON User (id_document);
