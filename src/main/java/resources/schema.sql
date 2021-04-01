@@ -22,38 +22,27 @@ COMMENT ON TABLE Document IS 'real documents table';
 ALTER TABLE Document ADD FOREIGN KEY (id_doc_type) REFERENCES Document_type(id);
 CREATE INDEX IX_User_document ON Document (id_doc_type);
 
-CREATE TABLE IF NOT EXISTS Address (
-    id         INTEGER                         COMMENT 'Unique identifier' PRIMARY KEY AUTO_INCREMENT,
-    city       VARCHAR(50)   NOT NULL          COMMENT 'Address city',
-    street     VARCHAR(50)   NOT NULL          COMMENT 'Address street',
-    house      VARCHAR(10)   NOT NULL          COMMENT 'Address house'
-);
-
 CREATE TABLE IF NOT EXISTS Organization (
     id         INTEGER                         COMMENT 'Unique identifier' PRIMARY KEY AUTO_INCREMENT,
     short_name VARCHAR(50)   NOT NULL          COMMENT 'Short name of an organization',
     full_name  VARCHAR(150)  NOT NULL          COMMENT 'Full name of an organization',
     inn        VARCHAR(10)   NOT NULL          COMMENT 'Organization TIN',
     kpp        VARCHAR(9)    NOT NULL          COMMENT 'Organization RRC',
-    address_id INTEGER       NOT NULL          COMMENT 'Head office organization address',
+    address    VARCHAR(255)       NOT NULL          COMMENT 'Head office organization address',
     phone      VARCHAR(10)                     COMMENT 'Head office organization phone',
     is_active  BOOLEAN       DEFAULT TRUE      COMMENT 'Organization status'
 );
-ALTER TABLE Organization ADD FOREIGN KEY (address_id) REFERENCES Address(id);
-CREATE INDEX IX_Organization_address ON Address (id);
 CREATE INDEX IX_Organization_name ON Organization (short_name);
 
 CREATE TABLE IF NOT EXISTS Office (
     id              INTEGER                    COMMENT 'Unique identifier' PRIMARY KEY AUTO_INCREMENT,
     office_name     VARCHAR(50)   NOT NULL     COMMENT 'Short name of an organization office',
-    address_id      INTEGER       NOT NULL     COMMENT 'Address of an organization office',
+    address         VARCHAR(255)       NOT NULL     COMMENT 'Address of an organization office',
     phone           VARCHAR(10)                COMMENT 'Phone number of an organization office',
     isActive        BOOLEAN       DEFAULT TRUE COMMENT 'Status of an organization office ',
     id_organisation INTEGER       NOT NULL     COMMENT 'Unique identifier of an organization to which an office belongs'
 );
 ALTER TABLE Office ADD FOREIGN KEY (id_organisation) REFERENCES Organization(id);
-ALTER TABLE Office ADD FOREIGN KEY (address_id) REFERENCES Address(id);
-CREATE INDEX IX_Office_address ON Address (id);
 CREATE INDEX IX_Office_id_organisation ON Office (id_organisation);
 
 CREATE TABLE IF NOT EXISTS User (
@@ -61,17 +50,17 @@ CREATE TABLE IF NOT EXISTS User (
     first_name       VARCHAR(50)   NOT NULL     COMMENT 'User name',
     second_name      VARCHAR(50)                COMMENT 'User surname',
     middle_name      VARCHAR(50)                COMMENT 'User middle name',
-    position         VARCHAR(50)   NOT NULL     COMMENT 'User position',
+    occupation       VARCHAR(50)   NOT NULL     COMMENT 'User position',
     phone            VARCHAR(10)                COMMENT 'User phone',
-    id_document      INTEGER                    COMMENT 'User document',
+    document_id      INTEGER                    COMMENT 'User document',
     is_identified    BOOLEAN       DEFAULT TRUE COMMENT 'Is user identified?',
-    id_citizenship   INTEGER       NOT NULL     COMMENT 'User citizenship',
-    id_office        INTEGER       NOT NULL     COMMENT 'Unique identifier of an organization to which a user belongs'
+    citizenship_id   INTEGER       NOT NULL     COMMENT 'User citizenship',
+    office_id        INTEGER       NOT NULL     COMMENT 'Unique identifier of an organization to which a user belongs'
 );
-ALTER TABLE User ADD FOREIGN KEY (id_office) REFERENCES Office(id);
-ALTER TABLE User ADD FOREIGN KEY (id_document)  REFERENCES Document(id);
-ALTER TABLE User ADD FOREIGN KEY (id_citizenship)  REFERENCES Citizenship(id);
-CREATE INDEX IX_User_id_citizenship ON User (id_citizenship);
+ALTER TABLE User ADD FOREIGN KEY (office_id) REFERENCES Office(id);
+ALTER TABLE User ADD FOREIGN KEY (document_id)  REFERENCES Document(id);
+ALTER TABLE User ADD FOREIGN KEY (citizenship_id)  REFERENCES Citizenship(id);
+CREATE INDEX IX_User_id_citizenship ON User (citizenship_id);
 CREATE INDEX IX_User_first_name ON User (first_name);
-CREATE INDEX IX_User_id_office ON User (id_office);
-CREATE INDEX IX_User_id_document ON User (id_document);
+CREATE INDEX IX_User_id_office ON User (office_id);
+CREATE INDEX IX_User_id_document ON User (document_id);

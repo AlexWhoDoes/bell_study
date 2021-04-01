@@ -15,27 +15,19 @@ VALUES (1, '2007-01-01', '778-887'),
        (1, '2013-04-03', '987-876'),
        (2, '2020-01-05', '984-998');
 
-INSERT INTO Address (city, street, house)
-VALUES ('Moscow', 'Proletarsky district', '20'),
-       ('Moscow', 'Kievskiy district', '5'),
-       ('S.Petersburg', 'River district', '4'),
-       ('S.Petersburg', 'Field district', '2'),
-       ('London', 'Green street', '202'),
-       ('London', 'Biker street', '24'),
-       ('Boston', 'Black street', '65');
 
-INSERT INTO Organization (short_name, full_name, inn, kpp, address_id, phone, is_active)
-VALUES ('Firstbank', 'LLC_First_bank ', '1234567890', '987654321', 1, '9897785432', true),
-       ('Secondbank', 'LLC_Second_bank ', '0987654321', '123456789', 2, '9897785432', true);
+INSERT INTO Organization (short_name, full_name, inn, kpp, address, phone, is_active)
+VALUES ('Firstbank', 'LLC_First_bank ', '1234567890', '987654321', 'Moscow, Black street, 21', '9897785432', true),
+       ('Secondbank', 'LLC_Second_bank ', '0987654321', '123456789', 'Boston, Green street, 4', '9897785432', true);
 
-INSERT INTO Office (office_name, address_id, phone, isActive, id_organisation)
-VALUES ('Head_office', 3, '4959999958', true, 1),
-       ('Just_office', 4, '4959999957', true, 1),
-       ('One_more_office', 5, '369988957', true, 1),
-       ('Head_office', 6, '369879954', true, 2),
-       ('Just_office', 7, '44488996', true, 2);
+INSERT INTO Office (office_name, address, phone, isActive, id_organisation)
+VALUES ('Head_office', 'Boston, Blue street, 5', '4959999958', true, 1),
+       ('Just_office', 'Paris, Just street, 2', '4959999957', true, 1),
+       ('One_more_office', 'Berlin, Aleksandr platz, 5', '369988957', true, 1),
+       ('Head_office', 'Moscow, Red square, 1', '369879954', true, 2),
+       ('Just_office', 'New-York, Yellow street, 2', '44488996', true, 2);
 
-INSERT INTO User (first_name, second_name, middle_name, position, phone, id_document, is_identified, id_citizenship,  id_office)
+INSERT INTO User (first_name, second_name, middle_name, occupation, phone, document_id, is_identified, citizenship_id,  office_id)
 VALUES ('Alexander', 'Vinogradov', 'Dmitrievich', 'CIO', '9999453378', 1, true,1, 1),
        ('Vladimir', 'Vinogradov', 'Dmitrievich', 'CTO', '9864563221', 1, false,2, 2),
        ('Alexey', 'Lobanov', 'Ivanovich', 'COO', '9997876532', 2, true,3, 3),
