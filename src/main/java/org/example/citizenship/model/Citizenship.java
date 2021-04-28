@@ -40,7 +40,7 @@ public class Citizenship {
     @Column(name = "citizenship_name")
     private String citizenshipName;
 
-    @OneToMany(mappedBy = "citizenship")
+    @OneToMany(mappedBy = "citizenship") //maybe that one to be deleted RELATIONS
     private Set<User> users;
 
 

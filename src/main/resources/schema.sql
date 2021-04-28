@@ -52,15 +52,15 @@ CREATE INDEX IX_Office_id_organisation ON Office (organisation_id);
 
 CREATE TABLE IF NOT EXISTS User (
     id               INTEGER                    COMMENT 'Unique identifier' PRIMARY KEY AUTO_INCREMENT,
-    version          INTEGER       NOT NULL     COMMENT 'Hibernate internal service field',
-    first_name       VARCHAR(50)   NOT NULL     COMMENT 'User name',
+    version          INTEGER                    COMMENT 'Hibernate internal service field',
+    first_name       VARCHAR(50)                COMMENT 'User name',
     second_name      VARCHAR(50)                COMMENT 'User surname',
     middle_name      VARCHAR(50)                COMMENT 'User middle name',
-    occupation       VARCHAR(50)   NOT NULL     COMMENT 'User position',
+    occupation       VARCHAR(50)                COMMENT 'User position',
     phone            VARCHAR(10)                COMMENT 'User phone',
     is_identified    BOOLEAN       DEFAULT TRUE COMMENT 'Is user identified?',
-    citizenship_id   INTEGER       NOT NULL     COMMENT 'User citizenship',
-    office_id        INTEGER       NOT NULL     COMMENT 'Unique identifier of an organization to which a user belongs to'
+    citizenship_id   INTEGER                    COMMENT 'User citizenship',
+    office_id        INTEGER                    COMMENT 'Unique identifier of an organization to which a user belongs to'
 );
 
 ALTER TABLE User ADD FOREIGN KEY (office_id) REFERENCES Office(id);

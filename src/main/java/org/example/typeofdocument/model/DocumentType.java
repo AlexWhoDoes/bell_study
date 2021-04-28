@@ -25,7 +25,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "Document_type")
-public class DocumentType {
+public class DocumentType {  //make using springData DOUBLETHINK HOW TO
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,8 +43,8 @@ public class DocumentType {
     @Column(name = "code")
     private String code;
 
-    @OneToMany(mappedBy = "documentType")
-    private Set<Document> documents;
+    //@OneToMany(mappedBy = "documentType")
+    //private Set<Document> documents;
 
 
 }

@@ -50,9 +50,11 @@ public class Document {
     @Column(name = "document_number")
     private String documentNumber;
 
+
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
     private User user;
+
 
 
 

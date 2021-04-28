@@ -65,7 +65,7 @@ public class User {
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
     )
-    @PrimaryKeyJoinColumn
+    //@PrimaryKeyJoinColumn
     private Document document;
 
     @ManyToOne(fetch = FetchType.LAZY)
