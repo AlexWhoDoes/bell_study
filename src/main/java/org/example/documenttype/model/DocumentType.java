@@ -1,28 +1,16 @@
-package org.example.typeofdocument.model;
+package org.example.documenttype.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.example.document.model.Document;
-
+import lombok.Data;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.GenerationType;
 import javax.persistence.Version;
-import java.util.Set;
 
 
-@Getter
-@AllArgsConstructor
-@NoArgsConstructor
-@Setter
+@Data
 @Entity
 @Table(name = "Document_type")
 public class DocumentType {  //make using springData DOUBLETHINK HOW TO
@@ -37,14 +25,10 @@ public class DocumentType {  //make using springData DOUBLETHINK HOW TO
     @Version
     private Integer version;
 
-    @Column(name = "document_name")
+    @Column(name = "document_name", length = 50)
     private String documentName;
 
-    @Column(name = "code")
+    @Column(name = "code", length = 3)
     private String code;
-
-    //@OneToMany(mappedBy = "documentType")
-    //private Set<Document> documents;
-
 
 }

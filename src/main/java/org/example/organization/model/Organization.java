@@ -1,29 +1,28 @@
 package org.example.organization.model;
 
+import lombok.Data;
 import org.example.office.model.Office;
 import java.util.Set;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.example.user.model.User;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.GenerationType;
 import javax.persistence.Version;
 import javax.persistence.OneToMany;
 
-@Getter
-@AllArgsConstructor
-@NoArgsConstructor
-@Setter
+@Data
+@NamedQueries({
+        @NamedQuery(
+                name = "OrganizationGetById",
+                query = "SELECT p FROM Organization p WHERE p.id =: ORGANIZATION_ID"
+        )
+})
+
 @Entity
 @Table(name = "Organization")
 public class Organization {
@@ -54,10 +53,10 @@ public class Organization {
     @Column(name = "address", nullable = false)
     private String address;
 
-    @Column(name = "phone")
+    @Column(name = "phone", length = 20)
     private String phone;
 
-    @Column(name = "is_active", nullable = false)
+    @Column(name = "is_active")
     private Boolean isActive;
 
     @OneToMany(

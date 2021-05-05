@@ -1,12 +1,8 @@
 package org.example.office.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 import org.example.organization.model.Organization;
 import org.example.user.model.User;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,10 +17,7 @@ import javax.persistence.Version;
 import java.util.Set;
 
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 @Entity
 @Table(name = "Office")
 public class Office {
@@ -39,17 +32,17 @@ public class Office {
     @Version
     private Integer version;
 
-    @Column(name = "office_name", nullable = false, length = 50)
+    @Column(name = "office_name", length = 50)
     private String officeName;
 
-    @Column(name = "address", nullable = false)
+    @Column(name = "address")
     private String address;
 
-    @Column(name = "phone")
+    @Column(name = "phone", length = 20)
     private String phone;
 
     @Column(name = "is_active")
-    private String isActive;
+    private Boolean isActive;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "organisation_id")
@@ -60,6 +53,5 @@ public class Office {
             fetch = FetchType.LAZY
     )
     private Set<User> user;
-
 
 }

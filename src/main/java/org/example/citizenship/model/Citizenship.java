@@ -1,25 +1,15 @@
 package org.example.citizenship.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.example.user.model.User;
-
+import lombok.Data;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
 import javax.persistence.GenerationType;
-import java.util.Set;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 @Entity
 @Table(name = "Citizenship")
 public class Citizenship {
@@ -39,9 +29,5 @@ public class Citizenship {
 
     @Column(name = "citizenship_name")
     private String citizenshipName;
-
-    @OneToMany(mappedBy = "citizenship") //maybe that one to be deleted RELATIONS
-    private Set<User> users;
-
 
 }

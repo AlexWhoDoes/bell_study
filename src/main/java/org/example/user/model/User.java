@@ -1,14 +1,9 @@
 package org.example.user.model;
 
-
+import lombok.Data;
 import org.example.citizenship.model.Citizenship;
 import org.example.document.model.Document;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.example.office.model.Office;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,12 +17,10 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.GenerationType;
 import javax.persistence.Version;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
-
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 @Entity
 @Table(name = "USER")
 public class User {
@@ -42,19 +35,19 @@ public class User {
     @Version
     private Integer version;
 
-    @Column(name = "first_name")
+    @Column(name = "first_name", length = 50, nullable = false)
     private String firstName;
 
-    @Column(name = "second_name")
+    @Column(name = "second_name", length = 50)
     private String secondName;
 
-    @Column(name = "middle_name")
+    @Column(name = "middle_name", length = 50)
     private String middleName;
 
-    @Column(name = "occupation")
-    private String occupation;
+    @Column(name = "position", length = 50)
+    private String position;
 
-    @Column(name = "phone")
+    @Column(name = "phone", length = 20)
     private String phone;
 
     @Column(name = "is_identified")
@@ -62,10 +55,10 @@ public class User {
 
     @OneToOne(
             mappedBy = "user",
-            fetch = FetchType.LAZY,
+            fetch = FetchType.EAGER,
             cascade = CascadeType.ALL
     )
-    //@PrimaryKeyJoinColumn
+    @PrimaryKeyJoinColumn
     private Document document;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -75,5 +68,6 @@ public class User {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "office_id")
     private Office office;
+
 
 }

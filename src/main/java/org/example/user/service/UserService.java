@@ -1,15 +1,38 @@
 package org.example.user.service;
 
-import org.example.user.dto.UserDto;
-import org.example.user.model.User;
-
+import org.example.user.requestobject.UserSaveRequest;
+import org.example.user.requestobject.UserListRequest;
+import org.example.user.requestobject.UserUpdateRequest;
 import java.util.List;
+import java.util.Map;
 
 public interface UserService {
 
-    List<UserDto> all();
+    /**
+     * Get all of users according to parameter from request body
+     * @return
+     */
+    List<Map<String, String>> all(UserListRequest userListRequest);
 
-    UserDto getById(Long id);
+    /**
+     * Get user by id
+     * @param id
+     * @return
+     */
+    Map<String, String> getById(Long id);
 
-    void add(User newUser);
+    /**
+     * Add a new user to db
+     * @param userSaveRequest
+     * @return
+     */
+    void save(UserSaveRequest userSaveRequest);
+
+
+    /**
+     * Update an existing user
+     * @param userUpdateRequest
+     * @return
+     */
+    void update(UserUpdateRequest userUpdateRequest);
 }

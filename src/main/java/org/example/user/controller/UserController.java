@@ -1,15 +1,20 @@
 package org.example.user.controller;
 
-import org.example.user.dto.UserDto;
-import org.example.user.model.User;
+import org.example.user.requestobject.UserSaveRequest;
+import org.example.user.requestobject.UserListRequest;
+import org.example.user.requestobject.UserUpdateRequest;
 import org.example.user.service.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
+import java.util.Map;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -20,27 +25,29 @@ public class UserController {
 
     private final UserService userService;
 
+    @Autowired
     UserController(UserService userService) {
         this.userService = userService;
     }
 
-    @GetMapping("/list") //should be POST method and filter to extract exact users from DB
-    List<UserDto> all() {// now it shows just all users from DB
-        return userService.all();
+    @RequestMapping(value = "/list", method = POST)
+    List<Map<String, String>> all(@Valid @RequestBody UserListRequest userListRequest) {
+        return userService.all(userListRequest);
     }
 
     @RequestMapping(value = "/{id}", method = GET)
-    UserDto getById(@PathVariable("id") Long id) {
+    Map<String, String> getById(@PathVariable("id") Long id) {
         return userService.getById(id);
     }
 
     @RequestMapping(value = "/save", method = POST)
-    public void person(@RequestBody User newUser) {
-        System.out.println(newUser.getOffice().getId());
-        userService.add(newUser);
+    void save(@Valid @RequestBody UserSaveRequest userSaveRequest) {
+        userService.save(userSaveRequest);
     }
 
-
-
+    @RequestMapping(value = "/update", method = POST)
+    void update(@Valid @RequestBody UserUpdateRequest userUpdateRequest) {
+        userService.update(userUpdateRequest);
+    }
 
 }

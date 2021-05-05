@@ -1,12 +1,8 @@
 package org.example.document.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.example.typeofdocument.model.DocumentType;
+import lombok.Data;
+import org.example.documenttype.model.DocumentType;
 import org.example.user.model.User;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -19,13 +15,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.MapsId;
 import javax.persistence.FetchType;
-
-
 import java.util.Date;
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+
+@Data
 @Entity
 @Table(name = "Document")
 public class Document {
@@ -39,23 +31,19 @@ public class Document {
     @Version
     private Integer version;
 
-    @ManyToOne
-    @JoinColumn(name = "doc_type_id")
-    private DocumentType documentType;
-
     @Column(name = "document_date")
     @Temporal(TemporalType.DATE)
     private Date documentDate;
 
-    @Column(name = "document_number")
+    @Column(name = "document_number", length = 10)
     private String documentNumber;
 
+    @ManyToOne
+    @JoinColumn(name = "doc_type_id")
+    private DocumentType documentType;
 
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
     private User user;
-
-
-
 
 }

@@ -19,12 +19,12 @@ VALUES (0, 'Head_office', 'Boston, Blue street, 5', '4959999958', true, 1),
        (0, 'Head_office', 'Moscow, Red square, 1', '369879954', true, 2),
        (0, 'Just_office', 'New-York, Yellow street, 2', '44488996', true, 2);
 
-INSERT INTO User (version, first_name, second_name, middle_name, occupation, phone, is_identified, citizenship_id,  office_id)
+INSERT INTO User (version, first_name, second_name, middle_name, position, phone, is_identified, citizenship_id,  office_id)
 VALUES (0, 'Alexander', 'Vinogradov', 'Dmitrievich', 'CIO', '9999453378', true,1, 1),
        (0, 'Vladimir', 'Vinogradov', 'Dmitrievich', 'CTO', '9864563221', false,2, 2),
        (0, 'Alexey', 'Lobanov', 'Ivanovich', 'COO', '9997876532', true,3, 3),
        (0, 'Max', 'Smith', 'Black', 'accountant', '88898965', false,4, 4),
-       (0, 'John', 'Doe', 'J', 'unknown', '00000000', false,1, 1);
+       (0, 'John', 'Doe', 'J', 'unknown', '00000000', false,1, 5);
 
 INSERT INTO Document (version, user_id, doc_type_id, document_date, document_number)
 VALUES (0, 1, 1, '2007-01-01', '778-887'),

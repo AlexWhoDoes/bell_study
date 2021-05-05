@@ -1,26 +1,32 @@
 package org.example.user.dao;
 
+import org.example.user.requestobject.UserListRequest;
 import org.example.user.model.User;
-import org.springframework.data.jpa.repository.JpaRepository;
+
 import java.util.List;
 
-//public interface UserDao extends JpaRepository<User, Long> {} // это сработало!
 
 public interface UserDao {
 
     /**
-     * Get all of Users
+     * Get all of users according to parameter from request body
      * @return
      */
-    List<User> all();
+    List<User> all(UserListRequest userListRequest);
 
     /**
      * Get user by id
-     *
      * @param id
      * @return
      */
     User getById(Long id);
 
-    void add(User newUser);
+    /**
+     * Add or update a  user
+     * @param newUser
+     * @return
+     */
+    Long addOrUpdate(User newUser);
+
+
 }
