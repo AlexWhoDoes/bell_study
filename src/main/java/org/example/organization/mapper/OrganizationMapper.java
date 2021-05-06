@@ -1,6 +1,9 @@
 package org.example.organization.mapper;
 
 import org.example.organization.model.Organization;
+import org.example.organization.organizationview.OrganizationView;
+import org.example.organization.organizationview.OrganizationViewShort;
+import org.example.utils.customexception.NoListException;
 import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -15,16 +18,16 @@ public class OrganizationMapper {
      * @param organizationList
      * @return
      */
-    public List<Map<String, String>> all(List<Organization> organizationList) {
+    public List<OrganizationViewShort> all(List<Organization> organizationList) {
         if(organizationList.isEmpty()) {
-            throw new RuntimeException("no organization have found with such parameters");
+            throw new NoListException("organization", "no organization have found with such parameters");
         }
 
-        List<Map<String, String>> out = new ArrayList<>();
+        List<OrganizationViewShort> out = new ArrayList<>();
 
         for (Organization organization: organizationList) {
-            Map<String, String> responseMap = responseOrganizationMapBuilder(organization);
-            out.add(responseMap);
+            OrganizationViewShort organizationViewShort = responseOrganizationMapBuilder(organization);
+            out.add(organizationViewShort);
         }
 
         return out;
@@ -35,29 +38,29 @@ public class OrganizationMapper {
      * @param organization
      * @return
      */
-    public Map<String, String> getById(Organization organization) {
+    public OrganizationView getById(Organization organization) {
 
-        Map<String, String> responseMap = new LinkedHashMap<>();
+        OrganizationView organizationView = new OrganizationView();
 
-        responseMap.put("id", String.valueOf(organization.getId()));
-        responseMap.put("name", organization.getShortName());
-        responseMap.put("fullName", organization.getFullName());
-        responseMap.put("inn", organization.getInn());
-        responseMap.put("kpp", organization.getKpp());
-        responseMap.put("address", organization.getAddress());
-        responseMap.put("phone", organization.getPhone());
-        responseMap.put("isActive", String.valueOf(organization.getIsActive()));
+        organizationView.setId(organization.getId());
+        organizationView.setName(organization.getShortName());
+        organizationView.setFullName(organization.getFullName());
+        organizationView.setInn(organization.getInn());
+        organizationView.setKpp(organization.getKpp());
+        organizationView.setAddress(organization.getAddress());
+        organizationView.setPhone(organization.getPhone());
+        organizationView.setIsActive(String.valueOf(organization.getIsActive()));
 
-        return responseMap;
+        return organizationView;
     }
 
-    private Map<String, String> responseOrganizationMapBuilder(Organization organization) {
-        Map<String, String> responseOrganizationMap = new LinkedHashMap<>();
+    private OrganizationViewShort responseOrganizationMapBuilder(Organization organization) {
+        OrganizationViewShort organizationViewShort = new OrganizationViewShort();
 
-        responseOrganizationMap.put("id", String.valueOf(organization.getId()));
-        responseOrganizationMap.put("name", organization.getShortName());
-        responseOrganizationMap.put("isActive", String.valueOf(organization.getIsActive()));
+        organizationViewShort.setId(organization.getId());
+        organizationViewShort.setName(organization.getShortName());
+        organizationViewShort.setIsActive(String.valueOf(organization.getIsActive()));
 
-        return responseOrganizationMap;
+        return organizationViewShort;
     }
 }

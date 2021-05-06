@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import java.util.UUID;
 
 @RestControllerAdvice
 public class ExceptionHandlerController {
@@ -115,6 +116,6 @@ public class ExceptionHandlerController {
     }
 
     private String exceptionNumberGenerator() {
-        return "ex_#" + number++ + "_" + java.time.ZonedDateTime.now();
+        return "ex_#" + number++ + "_" + UUID.randomUUID().toString();
     }
 }

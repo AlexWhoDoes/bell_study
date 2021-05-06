@@ -1,5 +1,7 @@
 package org.example.office.service;
 
+import org.example.office.officeview.OfficeView;
+import org.example.office.officeview.OfficeViewShort;
 import org.example.office.requestobject.OfficeListRequest;
 import org.example.office.requestobject.OfficeSaveRequest;
 import org.example.office.requestobject.OfficeUpdateRequest;
@@ -13,14 +15,14 @@ public interface OfficeService {
      * @param officeListRequest
      * @return
      */
-    List<Map<String, String>> all(OfficeListRequest officeListRequest);
+    List<OfficeViewShort> all(OfficeListRequest officeListRequest);
 
     /**
      * Get office by id
      * @param id
      * @return
      */
-    Map<String, String> getById(Long id);
+    OfficeView getById(Long id);
 
     /**
      * Update an existing organization

@@ -1,6 +1,8 @@
 package org.example.office.mapper;
 
 import org.example.office.model.Office;
+import org.example.office.officeview.OfficeView;
+import org.example.office.officeview.OfficeViewShort;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -16,16 +18,17 @@ public class OfficeMapper {
      * @param listOffice
      * @return
      */
-    public List<Map<String, String>> all(List<Office> listOffice) {
+    public List<OfficeViewShort> all(List<Office> listOffice) {
 
-        List<Map<String, String>> out = new ArrayList<>();
+        List<OfficeViewShort> out = new ArrayList<>();
         for (Office office: listOffice) {
-            Map<String, String> responseBody = new LinkedHashMap<>();
+            OfficeViewShort officeViewShort = new OfficeViewShort();
 
-            responseBody.put("id", String.valueOf(office.getId()));
-            responseBody.put("name", office.getOfficeName());
-            responseBody.put("isActive", String.valueOf(office.getIsActive()));
-            out.add(responseBody);
+            officeViewShort.setId(office.getId());
+            officeViewShort.setName(office.getOfficeName());
+            officeViewShort.setIsActive(String.valueOf(office.getIsActive()));
+
+            out.add(officeViewShort);
         }
 
         return out;
@@ -36,16 +39,16 @@ public class OfficeMapper {
      * @param office
      * @return
      */
-    public Map<String, String> getById(Office office) {
-        Map<String, String> responseBody = new LinkedHashMap<>();
+    public OfficeView getById(Office office) {
+        OfficeView officeView = new OfficeView();
 
-        responseBody.put("id", String.valueOf(office.getId()));
-        responseBody.put("name", office.getOfficeName());
-        responseBody.put("address", office.getAddress());
-        responseBody.put("phone", office.getPhone());
-        responseBody.put("isActive", String.valueOf(office.getIsActive()));
+        officeView.setId(office.getId());
+        officeView.setName(office.getOfficeName());
+        officeView.setAddress(office.getAddress());
+        officeView.setPhone(office.getPhone());
+        officeView.setIsActive(String.valueOf(office.getIsActive()));
 
-        return responseBody;
+        return officeView;
 
     }
 }

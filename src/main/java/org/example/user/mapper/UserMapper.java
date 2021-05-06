@@ -2,11 +2,11 @@ package org.example.user.mapper;
 
 import org.example.user.requestobject.UserSaveRequest;
 import org.example.user.model.User;
+import org.example.user.userview.UserView;
+import org.example.user.userview.UserViewShort;
 import org.springframework.stereotype.Component;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 
 @Component
@@ -17,16 +17,16 @@ public class UserMapper {
      * @param in
      * @return
      */
-    public List<Map<String, String>> all(List<User> in) {
+    public List<UserViewShort> all(List<User> in) {
         if(in.isEmpty()) {
             throw new RuntimeException("no users have found with such parameters");
         }
 
-        List<Map<String, String>> out = new ArrayList<>();
+        List<UserViewShort> out = new ArrayList<>();
 
         for (User user : in) {
-            Map<String, String> responseMap = responseUserMapBuilder(user);;
-            out.add(responseMap);
+            UserViewShort userView= responseUserMapBuilder(user);
+            out.add(userView);
         }
         return out;
     }
@@ -36,19 +36,24 @@ public class UserMapper {
      * @param user
      * @return
      */
-    public Map<String, String> getById(User user) {
+    public UserView getById(User user) {
 
-        Map<String, String> responseMap = responseUserMapBuilder(user);
+        UserView out = new UserView();
 
-        responseMap.put("phone", user.getPhone());
-        responseMap.put("docName", user.getDocument().getDocumentType().getDocumentName());
-        responseMap.put("docNumber", user.getDocument().getDocumentNumber());
-        responseMap.put("docDate", String.valueOf(user.getDocument().getDocumentDate()));
-        responseMap.put("citizenshipName", user.getCitizenship().getCitizenshipName());
-        responseMap.put("citizenshipCode", user.getCitizenship().getCode());
-        responseMap.put("isIdentified", String.valueOf(user.getIsIdentified()));
+        out.setId(user.getId());
+        out.setFirstName(user.getFirstName());
+        out.setSecondName(user.getSecondName());
+        out.setMiddleName(user.getMiddleName());
+        out.setPosition(user.getPosition());
+        out.setPhone(user.getPhone());
+        out.setDocName(user.getDocument().getDocumentType().getDocumentName());
+        out.setDocNumber(user.getDocument().getDocumentNumber());
+        out.setDocDate(String.valueOf(user.getDocument().getDocumentDate()));
+        out.setCitizenshipCode(user.getCitizenship().getCode());
+        out.setCitizenshipName(user.getCitizenship().getCitizenshipName());
+        out.setIsIdentified(String.valueOf(user.getIsIdentified()));
 
-        return responseMap;
+        return out;
     }
 
     /**
@@ -85,15 +90,15 @@ public class UserMapper {
         return user;
     }
 
-    private Map<String, String> responseUserMapBuilder(User user) {
-        Map<String, String> responseUserMap = new LinkedHashMap<>();
+    private UserViewShort responseUserMapBuilder(User user) {
+        UserViewShort out = new UserViewShort();
 
-        responseUserMap.put("id", String.valueOf(user.getId()));
-        responseUserMap.put("firstName", user.getFirstName());
-        responseUserMap.put("secondName", user.getSecondName());
-        responseUserMap.put("middleName", user.getMiddleName());
-        responseUserMap.put("position", user.getPosition());
+        out.setId(user.getId());
+        out.setFirstName(user.getFirstName());
+        out.setSecondName(user.getSecondName());
+        out.setMiddleName(user.getMiddleName());
+        out.setPosition(user.getPosition());
 
-        return responseUserMap;
+        return out;
     }
 }

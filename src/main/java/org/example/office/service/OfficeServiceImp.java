@@ -4,6 +4,8 @@ import org.example.office.dao.OfficeDao;
 import org.example.office.dao.OfficeSpecification;
 import org.example.office.mapper.OfficeMapper;
 import org.example.office.model.Office;
+import org.example.office.officeview.OfficeView;
+import org.example.office.officeview.OfficeViewShort;
 import org.example.office.requestobject.OfficeListRequest;
 import org.example.office.requestobject.OfficeSaveRequest;
 import org.example.office.requestobject.OfficeUpdateRequest;
@@ -47,7 +49,7 @@ public class OfficeServiceImp implements OfficeService {
      */
     @Override
     @Transactional(readOnly = true)
-    public List<Map<String, String>> all(OfficeListRequest officeListRequest) {
+    public List<OfficeViewShort> all(OfficeListRequest officeListRequest) {
 
         if (officeListRequest == null) {
             log.error("Failed to retrieve list of offices due to null object in method OfficeServiceImp.all()");
@@ -63,7 +65,7 @@ public class OfficeServiceImp implements OfficeService {
             throw new NoListException("Office", officeListRequest.toString());
         }
 
-        List<Map<String, String>> out = officeMapper.all(listOffice);
+        List<OfficeViewShort> out = officeMapper.all(listOffice);
 
         log.info("A list of offices has been retrieved successfully");
 
@@ -76,7 +78,7 @@ public class OfficeServiceImp implements OfficeService {
      */
     @Override
     @Transactional(readOnly = true)
-    public Map<String, String> getById(Long id) {
+    public OfficeView getById(Long id) {
 
         if (id == null) {
             log.error("Failed to retrieve an office due to null object in method OfficeServiceImp.getById()");
@@ -85,7 +87,7 @@ public class OfficeServiceImp implements OfficeService {
 
         log.info("A request to get an office by id " + id  + " is received");
 
-        Map<String, String> out;
+        OfficeView out;
 
         try {
             Office office = officeDao.getOne(id);

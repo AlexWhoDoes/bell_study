@@ -1,7 +1,8 @@
 package org.example.documenttype.service;
 
+import org.example.documenttype.documenttypeview.DocumentTypeView;
 import java.util.List;
-import java.util.Map;
+
 
 public interface ServiceDocumentType {
 
@@ -9,5 +10,5 @@ public interface ServiceDocumentType {
      * Return list of existing document types in a response representation
      * @return
      */
-    List<Map<String, String>> all();
+    List<DocumentTypeView> all();
 }

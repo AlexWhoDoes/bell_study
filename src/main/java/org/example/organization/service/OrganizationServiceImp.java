@@ -3,6 +3,8 @@ package org.example.organization.service;
 import org.example.organization.dao.OrganizationDao;
 import org.example.organization.mapper.OrganizationMapper;
 import org.example.organization.model.Organization;
+import org.example.organization.organizationview.OrganizationView;
+import org.example.organization.organizationview.OrganizationViewShort;
 import org.example.organization.requestobject.OrganizationListRequest;
 import org.example.organization.requestobject.OrganizationSaveOrUpdate;
 import org.example.organization.requestobject.OrganizationSaveRequest;
@@ -38,7 +40,7 @@ public class OrganizationServiceImp implements OrganizationService {
      */
     @Override
     @Transactional(readOnly = true)
-    public List<Map<String, String>> all(OrganizationListRequest organizationListRequest) {
+    public List<OrganizationViewShort> all(OrganizationListRequest organizationListRequest) {
 
         if (organizationListRequest == null) {
             log.error("Failed to retrieve list of organizations due to null object in method OrganizationServiceImp.all()");
@@ -54,7 +56,7 @@ public class OrganizationServiceImp implements OrganizationService {
             throw new NoListException("Organization", organizationListRequest.toString());
         }
 
-        List<Map<String, String>> out = organizationMapper.all(organizationList);
+        List<OrganizationViewShort> out = organizationMapper.all(organizationList);
 
         log.info("A list of organizations has been retrieved successfully");
 
@@ -67,7 +69,7 @@ public class OrganizationServiceImp implements OrganizationService {
      */
     @Override
     @Transactional(readOnly = true)
-    public Map<String, String> getById(Long id) {
+    public OrganizationView getById(Long id) {
 
         if (id == null) {
             log.error("Failed to retrieve an organization due to null object in method OrganizationServiceImp.getById()");
@@ -77,7 +79,7 @@ public class OrganizationServiceImp implements OrganizationService {
         log.info("A request to get an organization by id " + id  + " is received");
 
         Organization organization = organizationDao.getById(id);
-        Map<String, String> out  = organizationMapper.getById(organization);
+        OrganizationView out  = organizationMapper.getById(organization);
 
         log.info("An organization with id " + id + " has been retrieved successfully");
 

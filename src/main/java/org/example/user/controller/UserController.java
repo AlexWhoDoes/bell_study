@@ -4,16 +4,15 @@ import org.example.user.requestobject.UserSaveRequest;
 import org.example.user.requestobject.UserListRequest;
 import org.example.user.requestobject.UserUpdateRequest;
 import org.example.user.service.UserService;
+import org.example.user.userview.UserView;
+import org.example.user.userview.UserViewShort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Map;
-
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
@@ -29,12 +28,12 @@ public class UserController {
     }
 
     @RequestMapping(value = "/list", method = POST)
-    List<Map<String, String>> all(@Valid @RequestBody UserListRequest userListRequest) {
+    List<UserViewShort> all(@Valid @RequestBody UserListRequest userListRequest) {
         return userService.all(userListRequest);
     }
 
     @RequestMapping(value = "/{id}", method = GET)
-    Map<String, String> getById(@PathVariable("id") Long id) {
+    UserView getById(@PathVariable("id") Long id) {
         return userService.getById(id);
     }
 

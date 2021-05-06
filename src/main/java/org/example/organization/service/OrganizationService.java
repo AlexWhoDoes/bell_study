@@ -1,5 +1,7 @@
 package org.example.organization.service;
 
+import org.example.organization.organizationview.OrganizationView;
+import org.example.organization.organizationview.OrganizationViewShort;
 import org.example.organization.requestobject.OrganizationListRequest;
 import org.example.organization.requestobject.OrganizationSaveRequest;
 import org.example.organization.requestobject.OrganizationUpdateRequest;
@@ -14,14 +16,14 @@ public interface OrganizationService {
      * @param organizationListRequest
      * @return
      */
-    List<Map<String, String>> all (OrganizationListRequest organizationListRequest);
+    List<OrganizationViewShort> all (OrganizationListRequest organizationListRequest);
 
     /**
      * Get organization by id
      * @param id
      * @return
      */
-    Map<String, String> getById(Long id);
+    OrganizationView getById(Long id);
 
     /**
      * Update an existing organization

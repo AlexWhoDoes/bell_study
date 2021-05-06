@@ -1,5 +1,7 @@
 package org.example.office.controller;
 
+import org.example.office.officeview.OfficeView;
+import org.example.office.officeview.OfficeViewShort;
 import org.example.office.requestobject.OfficeListRequest;
 import org.example.office.requestobject.OfficeSaveRequest;
 import org.example.office.requestobject.OfficeUpdateRequest;
@@ -27,12 +29,12 @@ public class officeController {
     }
 
     @RequestMapping(value = "/list", method = POST)
-    List<Map<String, String>> all(@Valid @RequestBody OfficeListRequest officeListRequest) {
+    List<OfficeViewShort> all(@Valid @RequestBody OfficeListRequest officeListRequest) {
         return officeService.all(officeListRequest);
     }
 
     @RequestMapping(value = "/{id}", method = GET)
-    Map<String, String> getById(@PathVariable("id") Long id) {
+    OfficeView getById(@PathVariable("id") Long id) {
         return officeService.getById(id);
     }
 

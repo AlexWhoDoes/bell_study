@@ -1,5 +1,7 @@
 package org.example.organization.controller;
 
+import org.example.organization.organizationview.OrganizationView;
+import org.example.organization.organizationview.OrganizationViewShort;
 import org.example.organization.requestobject.OrganizationListRequest;
 import org.example.organization.requestobject.OrganizationSaveRequest;
 import org.example.organization.requestobject.OrganizationUpdateRequest;
@@ -28,13 +30,13 @@ public class OrganizationController {
     }
 
     @RequestMapping(value = "/list", method = POST)
-    List<Map<String, String>> all(@Valid @RequestBody OrganizationListRequest organizationListRequest) {
+    List<OrganizationViewShort> all(@Valid @RequestBody OrganizationListRequest organizationListRequest) {
         return organizationService.all(organizationListRequest);
 
     }
 
     @RequestMapping(value = "/{id}", method = GET)
-    Map<String, String> getById(@PathVariable("id") Long id) {
+    OrganizationView getById(@PathVariable("id") Long id) {
         return organizationService.getById(id);
     }
 

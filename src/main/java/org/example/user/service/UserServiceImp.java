@@ -2,6 +2,8 @@ package org.example.user.service;
 
 import lombok.Data;
 import org.example.user.requestobject.UserSaveRequest;
+import org.example.user.userview.UserView;
+import org.example.user.userview.UserViewShort;
 import org.example.utils.customexception.NoCitizenshipException;
 import org.example.utils.customexception.NoDocTypeException;
 import org.example.utils.customexception.NoDocumentException;
@@ -63,7 +65,7 @@ public class UserServiceImp implements UserService {
      */
     @Override
     @Transactional(readOnly = true)
-    public List<Map<String, String>> all(UserListRequest userListRequest) {
+    public List<UserViewShort> all(UserListRequest userListRequest) {
 
         if (userListRequest == null) {
             log.error("Failed to retrieve users due to null object in method UserServiceImp.all()");
@@ -77,7 +79,7 @@ public class UserServiceImp implements UserService {
             log.error("Failed to retrieve users due to parameters " + userList.toString());
             throw new NoListException("User", userListRequest.toString());
         }
-        List<Map<String, String>> out = userMapper.all(userList);
+        List<UserViewShort> out = userMapper.all(userList);
         log.info("A list of users has been retrieved successfully");
 
         return out;
@@ -88,7 +90,7 @@ public class UserServiceImp implements UserService {
      */
     @Override
     @Transactional(readOnly = true)
-    public Map<String, String> getById(Long id) { //check null and for what this method need a comment
+    public UserView getById(Long id) { //check null and for what this method need a comment
 
         if (id == null) {
             log.error("Failed to retrieve a user due to null object in method UserServiceImp.getById()");
@@ -98,7 +100,7 @@ public class UserServiceImp implements UserService {
         log.info("A request to get a user by id " + id  + " is received");
 
         User user = userDao.getById(id);
-        Map<String, String> out = userMapper.getById(user);;
+        UserView out = userMapper.getById(user);;
 
         log.info("A user with id " + id + " has been retrieved successfully");
 
