@@ -1,6 +1,6 @@
 # Bell study project
-### REST-service that provides set of operations for getting, saving, updating organizations, offices and users objects. It uses only two Http methods GET and POST.
-### The web service provides support queries to get the list citizenship with the name of the country and its code, as well as to get a list of document types with the name of the document and its code. To run that application it is requred to have Java 11.
+### REST-service that provides a set of operations for getting, saving, updating organizations, offices, and users' objects. It uses only two Http methods GET and POST.
+### The web service provides support queries to get the list citizenship with the name of the country and its code, as well as to get a list of document types with the name of the document and its code. To run that application it is required to have Java 11.
 
 ___
 # API description
@@ -22,12 +22,12 @@ java -jar demo-0.0.1-SNAPSHOT.jar
 ___
 # How to send requests
 - For GET-requests, the address bar is enough. Example: http://localhost:8888/user/1
-- For POST-requests, you may want to use POSTMAN or something similar. It is essential to write body of request in acceptable format.
+- For POST-requests, you may want to use POSTMAN or something similar. It is essential to write the body of the request in an acceptable format.
 ___
 # Referencebook-related queries 
 Referencebook-related request to get a list of countries and their codes.
 
-An example of request to get a list of citizenship:
+An example of a request to get a list of citizenship:
 ![request countries](https://github.com/AlexWhoDoes/bell_study/blob/master/img/getCountries.jpg)
 
 To request a list of document types just use that link: http://localhost:8888/docs
@@ -62,11 +62,11 @@ There are four allowed queries:
 
 - POST request to get a list of all organizations. Address http://localhost:8888/organization/list
 ![getOrgList](https://github.com/AlexWhoDoes/bell_study/blob/master/img/orgList.jpg)
-Attention, it is mandatory to write parameters into body request. At least a request must have parameter "name".
+Attention, it is mandatory to write parameters into body requests. At least a request must have the parameter "name".
 
-- POST request to update an organizations. Address http://localhost:8888/organization/update
+- POST request to update an organization. Address http://localhost:8888/organization/update
 
-Almost the same as for list of organizations but you can write some more parameters into body request.
+Almost the same as for list of organizations but you can write some more parameters into the body request.
 Example:
 ```
 {
@@ -91,9 +91,9 @@ As a response you will receive Json formatted output:
 }
 ```
 
-- POST request to save an organizations. Address http://localhost:8888/organization/save
+- POST request to save an organization. Address http://localhost:8888/organization/save
 
-Almost the same as for update organizations but body parameters slightly different.
+Almost the same as for an update organizations request but body parameters slightly different.
 Example:
 ```
 {
@@ -117,9 +117,9 @@ As a response you will receive Json formatted output:
 }
 ```
 
-- GET request to get an organizations by ID. Address http://localhost:8888/organization/1
+- GET request to get an organization by ID. Address http://localhost:8888/organization/1
 
-You can simply put that link into your brawser and you will recive Json formatted output:
+You can simply put that link into your browser and you will receive Json formatted output:
 ```
 {
     "data": {
@@ -140,9 +140,9 @@ There are four allowed queries:
 
 - POST request to get a list of all offices. Address http://localhost:8888/office/list
 ![getOfficeList](https://github.com/AlexWhoDoes/bell_study/blob/master/img/OfficeList.jpg)
-Attention, it is mandatory to write parameters into body request. At least a request must have parameter "orgId".
+Attention, it is mandatory to write parameters into body requests. At least a request must have the parameter "orgId".
 
-- POST request to update an organizations. Address http://localhost:8888/office/update
+- POST request to update an organization. Address http://localhost:8888/office/update
 
 Almost the same as for list of offices but you can write some more parameters into body request.
 Example:
@@ -155,7 +155,7 @@ Example:
     "isActive": "true"
 }
 ```
-Attention, it is mandatory to write parameters into body request. At least a request must have parameter "id", "name", "address".
+Attention, it is mandatory to write parameters into body requests. At least a request must have parameter "id", "name", "address".
 
 As a response you will receive Json formatted output:
 ```
@@ -179,7 +179,7 @@ Example:
     "isActive": "true"
 }
 ```
-Attention, it is mandatory to write parameters into body request. At least a request must have parameter "orgId".
+Attention, it is mandatory to write parameters into body requests. At least a request must have the parameter "orgId".
 
 As a response you will receive Json formatted output:
 ```
@@ -192,7 +192,7 @@ As a response you will receive Json formatted output:
 
 - GET request to get an organizations by ID. Address http://localhost:8888/office/1
 
-You can simply put that link into your brawser and you will recive Json formatted output:
+You can simply put that link into your browser and you will receive Json formatted output:
 
 ```
 {
@@ -211,11 +211,11 @@ There are four allowed queries:
 
 - POST request to get a list of all users. Address http://localhost:8888/user/list
 ![getOfficeList](https://github.com/AlexWhoDoes/bell_study/blob/master/img/userList.jpg)
-Attention, it is mandatory to write parameters into body request. At least a request must have parameter "officeId".
+Attention, it is mandatory to write parameters into body requests. At least a request must have the parameter "officeId".
 
 - POST request to update a user. Address http://localhost:8888/user/update
 
-Almost the same as for list of offices but you can write some more parameters into body request.
+Almost the same as for a list of user request but you can write some more parameters into the body request.
 Example:
 ```
 { 
@@ -233,7 +233,7 @@ Example:
   "isIdentified":true 
 }
 ```
-Attention, it is mandatory to write parameters into body request. At least a request must have parameter "id", "firstName", "position".
+Attention, it is mandatory to write parameters into body requests. At least a request must have parameter "id", "firstName", "position".
 
 As a response you will receive Json formatted output:
 ```
@@ -263,7 +263,7 @@ Example:
     "isIdentified" : false
 }
 ```
-Attention, it is mandatory to write parameters into body request. At least a request must have parameter "officeId", "firstName", "position".
+Attention, it is mandatory to write parameters into body requests. At least a request must have parameter "officeId", "firstName", "position".
 
 As a response you will receive Json formatted output:
 ```
@@ -276,7 +276,7 @@ As a response you will receive Json formatted output:
 
 - GET request to get a user by ID. Address http://localhost:8888/user/1
 
-You can simply put that link into your brawser and you will recive Json formatted output:
+You can simply put that link into your browser and you will receive Json formatted output:
 
 ```
 {
