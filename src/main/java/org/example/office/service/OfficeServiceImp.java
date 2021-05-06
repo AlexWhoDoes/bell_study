@@ -11,6 +11,7 @@ import org.example.organization.dao.OrganizationDao;
 import org.example.organization.model.Organization;
 import org.example.utils.customexception.NoListException;
 import org.example.utils.customexception.NoObjectException;
+import org.example.utils.customexception.NoOfficeException;
 import org.example.utils.customexception.NullException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +32,9 @@ public class OfficeServiceImp implements OfficeService {
     private final Logger log;
 
     @Autowired
-    public OfficeServiceImp(OfficeDao officeDao, OrganizationDao organizationDao, OfficeMapper officeMapper) {
+    public OfficeServiceImp(OfficeDao officeDao,
+                            OrganizationDao organizationDao,
+                            OfficeMapper officeMapper) {
         this.officeDao = officeDao;
         this.organizationDao = organizationDao;
         this.officeMapper = officeMapper;
@@ -112,6 +115,12 @@ public class OfficeServiceImp implements OfficeService {
         }
 
         log.info("A request to update an office is received \nOffice: \n" + officeUpdateRequest.toString());
+
+        if(!officeDao.existsOfficeById(officeUpdateRequest.getId())) {
+            throw new NoOfficeException("office with id "
+                    + officeUpdateRequest.getId()
+                    + " does not exist", officeUpdateRequest.getId());
+        }
 
         Office office = officeDao.getOne(officeUpdateRequest.getId());
         office.setOfficeName(officeUpdateRequest.getName());

@@ -24,7 +24,7 @@ public class ExceptionHandlerController {
         ErrorObject errorObject = new ErrorObject();
         errorObject.setError("There is no citizenship with code "
                 + e.getCitizenshipCode()
-                + "\nException number is "
+                + " Exception number is "
                 + exceptionNumber);
         return errorObject;
     }
@@ -36,7 +36,7 @@ public class ExceptionHandlerController {
         ErrorObject errorObject = new ErrorObject();
         errorObject.setError("There is no office with id "
                 + e.getOfficeId()
-                + "\nException number is "
+                + " Exception number is "
                 + exceptionNumber);
         return errorObject;
     }
@@ -50,7 +50,7 @@ public class ExceptionHandlerController {
                 + e.getDocCode()
                 + " and/or name "
                 + e.getDocName()
-                + "\nException number is "
+                + " Exception number is "
                 + exceptionNumber);
         return errorObject;
     }
@@ -76,7 +76,7 @@ public class ExceptionHandlerController {
                 + e.getObject()
                 + " with such parameters: "
                 + e.getParam()
-                + "\nException number is "
+                + " Exception number is "
                 + exceptionNumber);
         return errorObject;
     }
