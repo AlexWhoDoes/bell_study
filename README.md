@@ -80,7 +80,7 @@ Example:
     "isActive": "true"
 }
 ```
-Attention, it is mandatory to write parameters into body request. At least a request must have parameter "id", "name", "fullName", "kpp", "address".
+Attention, it is mandatory to write parameters into body request. At least a request must have parameter "id", "name", "fullName", "inn", "kpp", "address".
 
 As a response you will receive Json formatted output:
 ```
@@ -106,6 +106,7 @@ Example:
     "isActive": "false"
 }
 ```
+Attention, it is mandatory to write parameters into body request. At least a request must have parameter "name", "fullName", "kpp", "kpp", "address".
 
 - GET request to get an organizations by ID. Address http://localhost:8888/organization/1
 
@@ -124,3 +125,11 @@ You can simply put that link into your brawser and you will recive Json formatte
     }
 }
 ```
+___
+# Office-related queries
+There are four allowed queries:
+
+- POST request to get a list of all offices. Address http://localhost:8888/office/list
+![getOfficeList]()
+Attention, it is mandatory to write parameters into body request. At least a request must have parameter "name".
+
