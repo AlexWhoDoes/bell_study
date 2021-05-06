@@ -209,6 +209,90 @@ ___
 # User-related queries
 There are four allowed queries:
 
-- POST request to get a list of all offices. Address http://localhost:8888/user/list
+- POST request to get a list of all users. Address http://localhost:8888/user/list
 ![getOfficeList](https://github.com/AlexWhoDoes/bell_study/blob/master/img/userList.jpg)
 Attention, it is mandatory to write parameters into body request. At least a request must have parameter "officeId".
+
+- POST request to update a user. Address http://localhost:8888/user/update
+
+Almost the same as for list of offices but you can write some more parameters into body request.
+Example:
+```
+{ 
+  "id" : 4,
+  "officeId":"01",
+  "firstName":"newName",
+  "secondName": "newSecondName",
+  "middleName": "newMiddleName",
+  "position": "Cgreat position",
+  "phone": "899901200",
+  "docName":"Passport",
+  "docNumber":"77-33",
+  "docDate":"2020-01-01",
+  "citizenshipCode":"002",
+  "isIdentified":true 
+}
+```
+Attention, it is mandatory to write parameters into body request. At least a request must have parameter "id", "firstName", "position".
+
+As a response you will receive Json formatted output:
+```
+{
+    "data": {
+        "result": "success"
+    }
+}
+```
+- POST request to save a user. Address http://localhost:8888/user/save
+
+Almost the same as for update an office but body parameters slightly different.
+Example:
+```
+{
+    "officeId" : 3,
+    "firstName": "Alex",
+    "secondName": "Black",
+    "middleName": "j",
+    "position": "CIO",
+    "phone" : "8495396363",
+    "docCode" : "02",
+    "docName" : "Passport",
+    "docNumber" : "773-777",
+    "docDate" : "2012-01-25",
+    "citizenshipCode" : "001",
+    "isIdentified" : false
+}
+```
+Attention, it is mandatory to write parameters into body request. At least a request must have parameter "officeId", "firstName", "position".
+
+As a response you will receive Json formatted output:
+```
+{
+    "data": {
+        "result": "success"
+    }
+}
+```
+
+- GET request to get a user by ID. Address http://localhost:8888/user/1
+
+You can simply put that link into your brawser and you will recive Json formatted output:
+
+```
+{
+    "data": {
+        "id": "1",
+        "firstName": "Alexander",
+        "secondName": "Vinogradov",
+        "middleName": "Dmitrievich",
+        "position": "CIO",
+        "phone": "9999453378",
+        "docName": "Passport",
+        "docNumber": "778-887",
+        "docDate": "2007-01-01",
+        "citizenshipName": "Russian federation",
+        "citizenshipCode": "001",
+        "isIdentified": "true"
+    }
+}
+```
