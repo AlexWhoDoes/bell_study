@@ -56,10 +56,30 @@ As a response you will receive Json formatted output:
 }
 ```
 ___
-# Organization-related inquiries
+# Organization-related queries
 
-There are four allower queries:
+There are four allowed queries:
 
-- POST request to get a list of all organizations 
+- POST request to get a list of all organizations. Address http://localhost:8888/organization/list
 ![getOrgList](https://github.com/AlexWhoDoes/bell_study/blob/master/img/orgList.jpg)
-Attantion, it is mandatory to write intp body reqyest. At least request must have parameter "name".
+Attention, it is mandatory to write parameters into body request. At least a request must have parameter "name".
+
+Almost the same as for list of organizations but you can write some more parameters into body request.
+Example:
+```
+{
+    "id": "1",
+    "name": "TheBestBankEver",
+    "fullName": "LLC TheBestBankEver ",
+    "inn": "1111111",
+    "kpp": "55555",
+    "address": "Moscow, Green street, 4",
+    "phone": "4959999999",
+    "isActive": "true"
+}
+```
+Attention, it is mandatory to write parameters into body request. At least a request must have parameter "id", "name", "fullName", "kpp", "address".
+
+- POST request to save an organizations. Address http://localhost:8888/user/save
+Almost the same as for update organizations but body parameters slightly different.
+Example:
