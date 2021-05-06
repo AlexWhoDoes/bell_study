@@ -13,6 +13,7 @@ ___
 Descriptions below shows with using POSTMAN app as a client app that makes requests.
 ___
 # Referencebook-related queries 
-Referencebook-related request to get a list of countries and their codes
+Referencebook-related request to get a list of countries and their codes.
+
 An example of request:
 ![request countries](https://github.com/AlexWhoDoes/bell_study/blob/master/img/getCountries.jpg)
