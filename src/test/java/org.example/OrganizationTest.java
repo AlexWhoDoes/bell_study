@@ -40,7 +40,7 @@ public class OrganizationTest {
     @Test
     public void getOrganizationList() {
         OrganizationListRequest organizationListRequest = new OrganizationListRequest();
-        organizationListRequest.setName("Firstbank");
+        organizationListRequest.setName("Secondbank");
 
         ResponseEntity<ResponseObject> response = restTemplate.postForEntity("http://localhost:"
                         + port

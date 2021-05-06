@@ -14,8 +14,10 @@
 		<version>2.4.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
 	<properties>
 		<java.version>11</java.version>
+		<projectlombok.version>1.18.20</projectlombok.version>
 		<start-class>org.example.Main</start-class>
 	</properties>
 	<dependencies>
@@ -44,7 +46,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.20</version>
+			<version>${projectlombok.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -57,7 +59,6 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>

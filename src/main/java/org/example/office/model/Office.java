@@ -16,7 +16,6 @@ import javax.persistence.Table;
 import javax.persistence.Version;
 import java.util.Set;
 
-
 @Data
 @Entity
 @Table(name = "Office")

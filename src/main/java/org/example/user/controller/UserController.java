@@ -5,8 +5,6 @@ import org.example.user.requestobject.UserListRequest;
 import org.example.user.requestobject.UserUpdateRequest;
 import org.example.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

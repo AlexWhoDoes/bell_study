@@ -13,7 +13,7 @@ import javax.persistence.Version;
 @Data
 @Entity
 @Table(name = "Document_type")
-public class DocumentType {  //make using springData DOUBLETHINK HOW TO
+public class DocumentType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
