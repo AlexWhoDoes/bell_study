@@ -56,3 +56,10 @@ As a response you will receive Json formatted output:
 }
 ```
 ___
+# Organization-related inquiries
+
+There are four allower queries:
+
+- POST request to get a list of all organizations 
+![getOrgList](https://github.com/AlexWhoDoes/bell_study/blob/master/img/orgList.jpg)
+Attantion, it is mandatory to write intp body reqyest. At least request must have parameter "name".
