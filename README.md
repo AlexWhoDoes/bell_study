@@ -207,4 +207,8 @@ You can simply put that link into your brawser and you will recive Json formatte
 ```
 ___
 # User-related queries
+There are four allowed queries:
 
+- POST request to get a list of all offices. Address http://localhost:8888/user/list
+![getOfficeList](https://github.com/AlexWhoDoes/bell_study/blob/master/img/OfficeList.jpg)
+Attention, it is mandatory to write parameters into body request. At least a request must have parameter "orgId".
