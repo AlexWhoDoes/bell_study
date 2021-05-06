@@ -81,5 +81,17 @@ Example:
 Attention, it is mandatory to write parameters into body request. At least a request must have parameter "id", "name", "fullName", "kpp", "address".
 
 - POST request to save an organizations. Address http://localhost:8888/user/save
+
 Almost the same as for update organizations but body parameters slightly different.
 Example:
+```
+{
+    "name": "NotSoBestBankEver",
+    "fullName": "LLC NotSoBestBankEver",
+    "inn": "99999",
+    "kpp": "5555",
+    "address": "Moscow, Noname street, 99",
+    "phone": "4956666666",
+    "isActive": "false"
+}
+```
