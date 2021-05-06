@@ -64,6 +64,8 @@ There are four allowed queries:
 ![getOrgList](https://github.com/AlexWhoDoes/bell_study/blob/master/img/orgList.jpg)
 Attention, it is mandatory to write parameters into body request. At least a request must have parameter "name".
 
+- POST request to save an organizations. Address http://localhost:8888/organization/update
+
 Almost the same as for list of organizations but you can write some more parameters into body request.
 Example:
 ```
@@ -80,7 +82,16 @@ Example:
 ```
 Attention, it is mandatory to write parameters into body request. At least a request must have parameter "id", "name", "fullName", "kpp", "address".
 
-- POST request to save an organizations. Address http://localhost:8888/user/save
+As a response you will receive Json formatted output:
+```
+{
+    "data": {
+        "result": "success"
+    }
+}
+```
+
+- POST request to save an organizations. Address http://localhost:8888/organization/save
 
 Almost the same as for update organizations but body parameters slightly different.
 Example:
@@ -93,5 +104,23 @@ Example:
     "address": "Moscow, Noname street, 99",
     "phone": "4956666666",
     "isActive": "false"
+}
+```
+
+- GET request to get an organizations by ID. Address http://localhost:8888/organization/1
+
+You can simply put that link into your brawser and you will recive Json formatted output:
+```
+{
+    "data": {
+        "id": "2",
+        "name": "Secondbank",
+        "fullName": "LLC_Second_bank ",
+        "inn": "0987654321",
+        "kpp": "123456789",
+        "address": "Boston, Green street, 4",
+        "phone": "9897785432",
+        "isActive": "true"
+    }
 }
 ```
