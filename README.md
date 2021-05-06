@@ -32,7 +32,7 @@ An example of request to get a list of citizenship:
 
 To request a list of document types just use that link: http://localhost:8888/docs
 
-As a response you will receive Json formatted output
+As a response you will receive Json formatted output:
 ```
 {
     "data": [
@@ -51,20 +51,6 @@ As a response you will receive Json formatted output
         {
             "name": "UK",
             "code": "004"
-        }
-    ]
-}
-```
-```
-{
-    "data": [
-        {
-            "name": "Passport",
-            "code": "001"
-        },
-        {
-            "name": "Driver license",
-            "code": "002"
         }
     ]
 }
