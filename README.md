@@ -64,7 +64,7 @@ There are four allowed queries:
 ![getOrgList](https://github.com/AlexWhoDoes/bell_study/blob/master/img/orgList.jpg)
 Attention, it is mandatory to write parameters into body request. At least a request must have parameter "name".
 
-- POST request to save an organizations. Address http://localhost:8888/organization/update
+- POST request to update an organizations. Address http://localhost:8888/organization/update
 
 Almost the same as for list of organizations but you can write some more parameters into body request.
 Example:
@@ -108,6 +108,15 @@ Example:
 ```
 Attention, it is mandatory to write parameters into body request. At least a request must have parameter "name", "fullName", "kpp", "kpp", "address".
 
+As a response you will receive Json formatted output:
+```
+{
+    "data": {
+        "result": "success"
+    }
+}
+```
+
 - GET request to get an organizations by ID. Address http://localhost:8888/organization/1
 
 You can simply put that link into your brawser and you will recive Json formatted output:
@@ -130,6 +139,72 @@ ___
 There are four allowed queries:
 
 - POST request to get a list of all offices. Address http://localhost:8888/office/list
-![getOfficeList]()
-Attention, it is mandatory to write parameters into body request. At least a request must have parameter "name".
+![getOfficeList](https://github.com/AlexWhoDoes/bell_study/blob/master/img/OfficeList.jpg)
+Attention, it is mandatory to write parameters into body request. At least a request must have parameter "orgId".
+
+- POST request to update an organizations. Address http://localhost:8888/office/update
+
+Almost the same as for list of offices but you can write some more parameters into body request.
+Example:
+```
+{
+    "id": "1",
+    "name": "UpdatedBank",
+    "address": "Moscow, Red square, 1",
+    "phone": "849911111",
+    "isActive": "true"
+}
+```
+Attention, it is mandatory to write parameters into body request. At least a request must have parameter "id", "name", "address".
+
+As a response you will receive Json formatted output:
+```
+{
+    "data": {
+        "result": "success"
+    }
+}
+```
+
+- POST request to save an office. Address http://localhost:8888/office/save
+
+Almost the same as for update an office but body parameters slightly different.
+Example:
+```
+{
+    "orgId": "1",
+    "name": "OneMoreOffice",
+    "address": "Moscow, Banana square, 1",
+    "phone": "84999944",
+    "isActive": "true"
+}
+```
+Attention, it is mandatory to write parameters into body request. At least a request must have parameter "orgId".
+
+As a response you will receive Json formatted output:
+```
+{
+    "data": {
+        "result": "success"
+    }
+}
+```
+
+- GET request to get an organizations by ID. Address http://localhost:8888/office/1
+
+You can simply put that link into your brawser and you will recive Json formatted output:
+
+```
+{
+    "data": {
+        "id": "1",
+        "name": "Head_office",
+        "address": "Boston, Blue street, 5",
+        "phone": "4959999958",
+        "isActive": "true"
+    }
+}
+```
+___
+# User-related queries
 
