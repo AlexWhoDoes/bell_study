@@ -15,5 +15,7 @@ ___
 # Referencebook-related queries 
 Referencebook-related request to get a list of countries and their codes.
 
-An example of request:
+An example of request to get a list of citizenship:
 ![request countries](https://github.com/AlexWhoDoes/bell_study/blob/master/img/getCountries.jpg)
+
+To request a list of document types just use that link: (http://localhost:8888/docs)
