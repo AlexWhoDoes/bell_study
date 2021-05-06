@@ -11,14 +11,11 @@ ___
 - Office-related queries
 - User-related queries
 
-Descriptions below shows with a usege of POSTMAN app as a client app that makes requests.
+The descriptions below shows the usage of POSTMAN app as a client app that makes requests.
 ___
 # How to start the application
-- The application can be launched through IDE (like Intellij IDEA). Just doqnolad the repository and luanch pom.xml as a project
-- The application can be launched as executable fat jar. The repository contains a fat jar bell_study/target/demo-0.0.1-SNAPSHOT.jar. You can download and launch it from source directory with following command:
-```
-java -jar demo-0.0.1-SNAPSHOT.jar
-```
+- The application can be launched through IDE (like Intellij IDEA). Just download the repository and launch pom.xml as a project
+
 ___
 # How to send requests
 - For GET-requests, the address bar is enough. Example: http://localhost:8888/user/1
