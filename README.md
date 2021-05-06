@@ -7,8 +7,8 @@ ___
 - How to start the application
 - How to send requests
 - Referencebook-related queries
-- Organization-related inquiries
-- Office-related inquiries
+- Organization-related queries
+- Office-related queries
 - User-related queries
 
 Descriptions below shows with using POSTMAN app as a client app that makes requests.
