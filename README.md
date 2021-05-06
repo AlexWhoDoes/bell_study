@@ -11,7 +11,7 @@ ___
 - Office-related queries
 - User-related queries
 
-Descriptions below shows with using POSTMAN app as a client app that makes requests.
+Descriptions below shows with a usege of POSTMAN app as a client app that makes requests.
 ___
 # How to start the application
 - The application can be launched through IDE (like Intellij IDEA). Just doqnolad the repository and luanch pom.xml as a project
