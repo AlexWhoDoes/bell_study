@@ -31,4 +31,42 @@ An example of request to get a list of citizenship:
 ![request countries](https://github.com/AlexWhoDoes/bell_study/blob/master/img/getCountries.jpg)
 
 To request a list of document types just use that link: http://localhost:8888/docs
+
+As a response you will receive Json formatted output
+```
+{
+    "data": [
+        {
+            "name": "Russian federation",
+            "code": "001"
+        },
+        {
+            "name": "Ukraine",
+            "code": "002"
+        },
+        {
+            "name": "USA",
+            "code": "003"
+        },
+        {
+            "name": "UK",
+            "code": "004"
+        }
+    ]
+}
+```
+```
+{
+    "data": [
+        {
+            "name": "Passport",
+            "code": "001"
+        },
+        {
+            "name": "Driver license",
+            "code": "002"
+        }
+    ]
+}
+```
 ___
