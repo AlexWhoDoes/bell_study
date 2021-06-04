@@ -1,4 +1,4 @@
-# Bell study project
+# Sber study project
 ### REST-service that provides a set of operations for getting, saving, updating organizations, offices, and users' objects. It uses only two Http methods GET and POST.
 ### The web service provides support queries to get the list citizenship with the name of the country and its code, as well as to get a list of document types with the name of the document and its code. To run that application it is required to have Java 11.
 
